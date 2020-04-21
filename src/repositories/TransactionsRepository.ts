@@ -19,7 +19,7 @@ class TransactionsRepository extends Repository<Transaction> {
     const transactions = await this.find();
 
     const balance = transactions.reduce((acc, transaction) => {
-      acc[transaction.type] += transaction.value;
+      acc[transaction.type] += Number(transaction.value);
       acc.total = acc.income - acc.outcome;
       return acc;
     }, initialBalance);

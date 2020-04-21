@@ -3,6 +3,7 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity('categories')
@@ -16,7 +17,7 @@ class Category {
   @CreateDateColumn({ select: false })
   created_at: Date;
 
-  @CreateDateColumn({ select: false })
+  @UpdateDateColumn({ select: false })
   updated_at: Date;
 }
 

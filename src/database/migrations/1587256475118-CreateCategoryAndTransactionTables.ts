@@ -51,7 +51,9 @@ export default class CreateCategoryAndTransactionTables1587256475118
         },
         {
           name: 'value',
-          type: 'integer',
+          type: 'decimal',
+          precision: 10,
+          scale: 2,
           default: 0,
         },
         {

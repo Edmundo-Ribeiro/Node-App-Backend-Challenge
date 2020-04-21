@@ -37,26 +37,23 @@ class CreateTransactionService {
       where: { title: normalizedCategory },
     });
 
-    let category_id: string;
+    let transactionCategory: Category;
 
     if (!categoryExists) {
       const newCategory = categoryReposirory.create({
         title: normalizedCategory,
       });
-      await categoryReposirory.save(newCategory);
-
-      category_id = newCategory.id;
+      transactionCategory = await categoryReposirory.save(newCategory);
     } else {
-      category_id = categoryExists.id;
+      transactionCategory = categoryExists;
     }
 
     const transaction = transactionReposirory.create({
       title,
       type,
       value,
-      category_id,
+      category: transactionCategory,
     });
-
     await transactionReposirory.save(transaction);
     return transaction;
   }
